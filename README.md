@@ -1,23 +1,30 @@
 # react-stateevents-practice1
 
+# Set Up
+
+You are now given a simple JSON API. To Run it do the following: 
+
+1. If you haven't already, install JSON Server: `npm install json-server'
+
+2. In your top level directory run: `json-server -w db.json`
+
 # Deliverables
 
-You have a fake api response that is being exported from `api.js`. The response is an array of multiple `dog` objects that look like this:
+This is going to be a full scale practice of everything we've learned so far: 
 
-  > `{ "id": 1, "name": "Happy Slay", "img": "https://www.sciencenews.org/sites/default/files/2018/08/main/articles/082918_lh_crispr-beagles_feat_REV.jpg", "breed": "Beagle"}`
+1. Create a Favorite Container
 
-- You have a regular component called DogCard, a container component called DogsList, an App component
-- On the DOM your application should show a list of dog images and a button for each image with an innerText that says "Bark"
-- When a User clicks on the "Bark" button it should render an `<h2>` to the screen with an innerText that says "Bark"
-- When a User clicks on the button a second time the "Ruff" should be removed from the DOM
+2. When a User clicks the `Bark` button the Dog should bark
 
-Below you will find a gif of the completed app
+3. When a User clicks on a Dog's image, the dog's `favorite` key should be flipped to `true`. This should persist, meaning when you refresh the page, the dog(s) that was favorited will continue to display in the favorites container
 
-# What are we practicing?
+4. When a User clicks on a Dog's image from the Favorites Container, the dog should be removed from the Favorites Container
 
-- Making decisions about when we need state and which component should hold state
-- mapping through an array to render a list of components
-- setState
-- Event Handling in React
+5. A User should be able to add a new Dog to the API. This should persist
+
+6. A User should be able to Delete a dog from the API. Implement this whichever way you feel best but it must persist
+
+7. A User can search for a dog by name in the Index but not the Favorites
+
 
 ![dog gif](state-pairing-gif.gif)
