@@ -1,15 +1,13 @@
 import React from 'react'
-// import NavBar from '../Components/NavBar.js'
+import DesktopNav from '../Components/DesktopNav'
 
-class DesktopContainer extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>desktop</h1>
-            </div>
-        )
-    }
 
+function DesktopContainer() {
+    return (
+        <div id="desktop">
+            <DesktopNav />
+        </div>
+    )
 }
 
 export default DesktopContainer;
