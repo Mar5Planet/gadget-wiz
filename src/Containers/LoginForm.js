@@ -9,7 +9,7 @@ function LoginForm(props) {
         console.log('mar')
     }
 
-    console.log(props.user)
+
     
     return (
         <form onSubmit={(e) => e.preventDefault()}>

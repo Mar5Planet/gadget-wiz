@@ -1,12 +1,17 @@
 import React from 'react'
+import Icon from '../Components/Icon'
+function IconContainer(props) {
 
-class IconContainer extends React.Component {
 
-    render() {
-        return {
-            //renders different icons 
-        }
-    }
+    return (
+      <div>
+          {props.baseGadgets.map(baseGadget => <Icon key={baseGadget.id} gadget={baseGadget} /> )}
+
+      </div>  
+
+    )
+        
+    
 
 };
 
