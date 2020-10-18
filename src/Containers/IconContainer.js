@@ -4,8 +4,8 @@ function IconContainer(props) {
 
     return (
       <div className="icons-container">
-          {props.baseGadgets.map(baseGadget => <Icon key={baseGadget.id} gadget={baseGadget} /> )}
-          {props.customGadgets.map(customGadget => <Icon key={customGadget.id} gadget={customGadget} />)}
+          {props.baseGadgets.map(baseGadget => <Icon key={baseGadget.id} gadget={baseGadget} renderGadget={props.renderGadget}/> )}
+          {props.customGadgets.map(customGadget => <Icon key={customGadget.id} gadget={customGadget} renderGadget={props.renderGadget}/>)}
       </div>  
 
     )
