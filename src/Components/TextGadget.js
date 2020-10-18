@@ -8,9 +8,7 @@ function TextGadget(props) {
     }
 
     return(
-        <div className="gadget text-gadget">
-        <textarea value={textContent} onChange={(e) => changeText(e)} />
-        </div>
+        <textarea className="gadget-textarea" value={textContent} onChange={(e) => changeText(e)} />
 
     )
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import DesktopNav from '../Components/DesktopNav'
 import IconContainer from './IconContainer'
-import TextGadget from '../Components/TextGadget'
+import Gadget from '../Components/Gadget'
 
 const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
 const customGadgetsUrl = 'http://localhost:3000/gadgets/'
@@ -30,14 +30,12 @@ function DesktopContainer(props) {
     useEffect(() => { fetchGadgets()}, [])
     
     const renderGadget = (gadget) => {
-        if (gadget.content_type === "base") {
-            console.log('base')
-        }    
-       else if (gadget.content_type === "test") {
-            setRenderedGadget(<TextGadget gadget={gadget}/>)               
-       }
+         setRenderedGadget(<Gadget gadget={gadget} remove={removeGadget}/>)         
     } 
 
+    const removeGadget = () => {
+        setRenderedGadget('')
+    }
     
     return (
         <div id="desktop">
