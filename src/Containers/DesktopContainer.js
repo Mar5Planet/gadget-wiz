@@ -4,7 +4,7 @@ import IconContainer from './IconContainer'
 
 
 function DesktopContainer(props) {
-    console.log(props.baseGadgets)
+    console.log(props.loggedinUser)
     return (
         <div id="desktop">
             <DesktopNav />

@@ -7,24 +7,38 @@ const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
 const usersUrl = 'http://localhost:3000/users/'
 
 function App() {
-  const [loggedInUser, setloggedInUser] = useState(false)
-  const [baseGadgets, setbaseGadgets] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState(false)
+  const [baseGadgets, setBaseGadgets] = useState([])
+  const [userArr, setUserArr] = useState([])
 
-  const fetchBaseGadgets = () => {
+  const fetchData = () => {
+    fetch(usersUrl)
+    .then(res => res.json())
+    .then(data => setUserArr(data));
+
     fetch(baseGadgetsUrl)
     .then(res => res.json())
-    .then(data => setbaseGadgets(data));
+    .then(data => setBaseGadgets(data));
   }
-  useEffect(() => { fetchBaseGadgets()}, [])
 
-  const userLoggedIn = (user) => {
-    setloggedInUser(user)
+  useEffect(() => { fetchData()}, [])
+
+  const userLoggedIn = (username, password) => {
+    // setLoggedInUser(username)
+
+    let currentUser = userArr.find(user => user.username === username)
+    if (currentUser && currentUser.password === password) {
+      setLoggedInUser(currentUser)
+    } else {
+      alert('login failed')
+    }
   }
 
   return(
     <Switch>
-      <Route path="/" exact render={() => <LoginForm user={loggedInUser} loginUser={userLoggedIn}/>} />
-      <Route path="/desktop" render={() => <DesktopContainer baseGadgets={baseGadgets}/>} />
+      <Route path="/" exact render={() => <LoginForm user={loggedInUser} loginUser={userLoggedIn} usersArr={userArr}/>} />
+      <Route path="/desktop" render={() => (loggedInUser? <DesktopContainer loggedinUser={loggedInUser} baseGadgets={baseGadgets}/> : false)} />
+      
     </Switch>
   )
 }
