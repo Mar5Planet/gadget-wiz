@@ -5,7 +5,6 @@ function FolderGadget(props) {
 
     const findFolderGadgets = () => {
         let gadgetsArr = props.gadgets.filter(gadg => gadg.folder_id === props.gadget.id)
-        console.log(props.renderGadget)
         return gadgetsArr.map((gadget, index) => <Icon key={index} gadget={gadget} renderGadget={props.renderGadget}/>)
         
     }
