@@ -6,7 +6,16 @@ import { Route, Switch } from 'react-router-dom'
 const usersUrl = 'http://localhost:3000/users/'
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(false)
+  // const [loggedInUser, setLoggedInUser] = useState(false)
+  //testing. Uncomment above and delete line below when ready to deploy.
+  
+  
+  const [loggedInUser, setLoggedInUser] = useState(
+    {id: 1,
+    username: 'mar'
+  }
+  )
+
   const [userArr, setUserArr] = useState([])
   
   const fetchUsers = () => {
