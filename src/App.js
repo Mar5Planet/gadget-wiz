@@ -14,7 +14,6 @@ function App() {
     .then(res => res.json())
     .then(data => setUserArr(data));
   }
-  
 
   useEffect(() => { fetchUsers()}, [])
   const userLoggedIn = (username, password) => {
