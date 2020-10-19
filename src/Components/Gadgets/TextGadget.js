@@ -8,7 +8,7 @@ function TextGadget(props) {
     }
 
     return(
-        <textarea className="gadget-textarea" value={textContent} onChange={(e) => changeText(e)} />
+        <textarea onMouseDown={() => props.patchGadget(props.gadget, textContent)} className="gadget-textarea" value={textContent} onChange={(e) => changeText(e)} />
 
     )
 
