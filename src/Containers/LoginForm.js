@@ -5,8 +5,6 @@ import { NavLink, Link } from 'react-router-dom'
 function LoginForm(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-
     
     return (
         <form onSubmit={(e) => e.preventDefault()}>
