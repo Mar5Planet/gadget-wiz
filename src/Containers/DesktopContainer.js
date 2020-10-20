@@ -16,6 +16,7 @@ function DesktopContainer(props) {
     const [renderedGadget, setRenderedGadget] = useState('')
     const [renderedGadgetTwo, setRenderedGadgetTwo] = useState('')
     
+    console.log(renderedGadget, renderedGadgetTwo)
     const fetchGadgets = () => {
       fetch(baseGadgetsUrl)
       .then(res => res.json())
@@ -108,7 +109,7 @@ function DesktopContainer(props) {
 
     return (
         <div id="desktop">
-            <DesktopNav />
+            <DesktopNav renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo}/>
             {renderedGadget}
             {renderedGadgetTwo}
             <IconContainer folderGadgets={folderGadgets} baseGadgets={baseGadgets} customGadgets={customGadgets} renderGadget={renderGadget}/>
