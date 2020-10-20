@@ -8,29 +8,12 @@ import {
     ListItem,
     Divider
   } from 'react95';
-  import  helpBook  from '../Assets/Images/help_book_big-0.png'
-
-// const test = {
-//     title: 'AppBar',
-//   component: AppBar,
-//   decorators: [
-//     story => (
-//       <div
-//         style={{
-//           padding: '5rem',
-//           background: 'teal'
-//         }}
-//       >
-//         {story()}
-//       </div>
-//     )
-//   ]
-//   }
-
 
 function DesktopNav() {
 
     const [open, setOpen] = React.useState(false);
+
+   
         
     return (
       <AppBar style={{backgroundColor: 'silver', position: 'fixed'}}>
@@ -43,35 +26,19 @@ function DesktopNav() {
                 <span role='img' aria-label='📂'>📂</span>Profile
                 </ListItem>
                 <ListItem>
-                  <span role='img' aria-label='📦'>📦</span>Another Action
+                  <span role='img' aria-label='📦'> 📦</span>Another Action
                 </ListItem>
                 <Divider />
                 <ListItem disabled>
-                  <span role='img' aria-label='🚀'>🚀</span>Something Else
+                  <span role='img' aria-label='🚀'>🚀</span>Log Out
                 </ListItem>
               </List>
             )}
         </div>
-    
-        {/* <TextField placeholder='Search...' width={150} style={{backgroundColor: "white"}}/> */}
         </Toolbar>
       </AppBar>
+      
     );
-    
-    // return (
-    //     <div className="navbar">
-    //     <div className="btn-group dropup">
-    //         <button type="button" className="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    //             Start
-    //         </button>
-    //         <div className="dropdown-menu">
-    //             <button className="dropdown-item">Shut Down...</button>
-    //             <button className="dropdown-item">Another action</button>
-    //             <button className="dropdown-item">Something else here</button>
-    //         </div>
-    //         </div>
-    //     </div>
-    // )
 }
 
 export default DesktopNav;

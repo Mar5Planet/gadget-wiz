@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import DesktopNav from '../Components/DesktopNav'
 import IconContainer from './IconContainer'
 import Gadget from '../Components/Gadget'
+import { useClippy, ClippyProvider } from '@react95/clippy'
+
 
 const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
 const customGadgetsUrl = 'http://localhost:3000/gadgets/'
@@ -96,12 +98,23 @@ function DesktopContainer(props) {
         setCustomGadgets(gadgetsArr)
     }
 
+    const Clippy = () => {
+        const { clippy } = useClippy()
+        return('')
+
+        // !!renders a button that when clicked activates Clippy – though it seems redundant. Clippy seems to respond when you click him proper. 
+        // return <span onClick={() => clippy.play('Wave')}>Hello Clippy!</span>
+    }
+
     return (
         <div id="desktop">
             <DesktopNav />
             {renderedGadget}
             {renderedGadgetTwo}
             <IconContainer folderGadgets={folderGadgets} baseGadgets={baseGadgets} customGadgets={customGadgets} renderGadget={renderGadget}/>
+            <ClippyProvider >
+                <Clippy />
+            </ClippyProvider>
         </div>
     )
 }
