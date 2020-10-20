@@ -5,6 +5,7 @@ import ImageGadget from './Gadgets/Image'
 import FolderGadget from './Gadgets/FolderGadget'
 import { render } from 'react-dom'
 import SnakeGame from './Gadgets/SnakeGame'
+import PaintGadget from './Gadgets/PaintGadget'
 
 function Gadget(props) {
 
@@ -17,7 +18,9 @@ function Gadget(props) {
             return <FolderGadget renderGadget={props.renderGadget} gadgets={props.gadgets} patchGadget={props.patchGadget} gadget={props.gadget} />
         } else if (gadget.content_type === 'snake-game') {
             return <SnakeGame />
-        } 
+        } else if (gadget.content_type === 'paint') {
+            return <PaintGadget />
+        }
         else {
             return <TextGadget user={props.user} patchGadget={props.patchGadget} gadget={props.gadget} />
         }
