@@ -13,10 +13,6 @@ background-size: cover;}
   width: 100%;
 }
 /* Navbar */
-.fd0FMc .sc-gtssRu{
-  bottom: 0 !important;
-}
-
 .navg-item:hover {
   background-color: grey;
 }
@@ -54,7 +50,6 @@ background-size: cover;}
   background-color: transparent;
   text-align: center;
   margin: 0 2%;
-
 }
 
 .icon-img {
@@ -70,7 +65,7 @@ background-size: cover;}
   height: 90%;
   width: 100%;
   background-color: transparent;
-  margin: 2%;
+  margin: 2% 1%;
   flex-wrap: wrap;
   gap: 2px;
   flex-direction: column;

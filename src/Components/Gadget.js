@@ -4,6 +4,7 @@ import EmailGadget from './Gadgets/Email'
 import ImageGadget from './Gadgets/Image'
 import FolderGadget from './Gadgets/FolderGadget'
 import { render } from 'react-dom'
+import SnakeGame from './Gadgets/SnakeGame'
 
 function Gadget(props) {
 
@@ -14,7 +15,9 @@ function Gadget(props) {
             return <ImageGadget patchGadget={props.patchGadget} gadget={props.gadget} />
         } else if (gadget.content_type === 'folder') {
             return <FolderGadget renderGadget={props.renderGadget} gadgets={props.gadgets} patchGadget={props.patchGadget} gadget={props.gadget} />
-        }
+        } else if (gadget.content_type === 'snake-game') {
+            return <SnakeGame />
+        } 
         else {
             return <TextGadget user={props.user} patchGadget={props.patchGadget} gadget={props.gadget} />
         }
