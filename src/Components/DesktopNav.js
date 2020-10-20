@@ -10,22 +10,22 @@ import {
   } from 'react95';
   import  helpBook  from '../Assets/Images/help_book_big-0.png'
 
-const test = {
-    title: 'AppBar',
-  component: AppBar,
-  decorators: [
-    story => (
-      <div
-        style={{
-          padding: '5rem',
-          background: 'teal'
-        }}
-      >
-        {story()}
-      </div>
-    )
-  ]
-  }
+// const test = {
+//     title: 'AppBar',
+//   component: AppBar,
+//   decorators: [
+//     story => (
+//       <div
+//         style={{
+//           padding: '5rem',
+//           background: 'teal'
+//         }}
+//       >
+//         {story()}
+//       </div>
+//     )
+//   ]
+//   }
 
 
 function DesktopNav() {
@@ -33,7 +33,7 @@ function DesktopNav() {
     const [open, setOpen] = React.useState(false);
         
     return (
-      <AppBar style={{backgroundColor: 'silver' }}>
+      <AppBar style={{backgroundColor: 'silver', position: 'fixed'}}>
         <Toolbar style={{ justifyContent: 'space-between' }}>
           <div style={{ position: 'relative', display: 'inline-block' }}>
             <Button onClick={() => setOpen(!open)} active={open} style={{ backgroundColor: 'silver', fontWeight: 'bold', width: '95px', height: '38px' }}>
@@ -53,7 +53,7 @@ function DesktopNav() {
             )}
         </div>
     
-        <TextField placeholder='Search...' width={150} style={{backgroundColor: "white"}}/>
+        {/* <TextField placeholder='Search...' width={150} style={{backgroundColor: "white"}}/> */}
         </Toolbar>
       </AppBar>
     );
