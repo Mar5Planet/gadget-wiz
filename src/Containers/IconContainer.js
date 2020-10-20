@@ -1,11 +1,11 @@
 import React from 'react'
 import Icon from '../Components/Icon'
 function IconContainer(props) {
-
+    const desktopGadgets = props.customGadgets.filter(gadg => gadg.folder_id === 1)
+    const gadgetsArr = [...props.baseGadgets, ...desktopGadgets, ...props.folderGadgets]
     return (
       <div className="icons-container">
-          {props.baseGadgets.map(baseGadget => <Icon key={baseGadget.id} gadget={baseGadget} renderGadget={props.renderGadget}/> )}
-          {props.customGadgets.map(customGadget => <Icon key={customGadget.id} gadget={customGadget} renderGadget={props.renderGadget}/>)}
+          {gadgetsArr.map((gadget, index)  => <Icon key={index} gadget={gadget} renderGadget={props.renderGadget}/> )}
       </div>  
 
     )

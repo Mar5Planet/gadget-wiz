@@ -12,7 +12,8 @@ function App() {
   
   const [loggedInUser, setLoggedInUser] = useState(
     {id: 1,
-    username: 'mar'
+    username: 'mar',
+    email: "myemail@email.com"
   }
   )
 
@@ -38,7 +39,7 @@ function App() {
 
   return(
     <Switch>
-      <Route path="/" exact render={() => <LoginForm user={loggedInUser} loginUser={userLoggedIn} usersArr={userArr}/>} />
+      <Route path="/" exact render={() => <LoginForm user={loggedInUser} loginUser={userLoggedIn}/>} />
       <Route path="/desktop" render={() => (loggedInUser? <DesktopContainer loggedinUser={loggedInUser}/> : false)} />
       
     </Switch>

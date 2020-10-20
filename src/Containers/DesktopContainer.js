@@ -5,12 +5,15 @@ import Gadget from '../Components/Gadget'
 
 const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
 const customGadgetsUrl = 'http://localhost:3000/gadgets/'
+const folderGadgetUrl = 'http://localhost:3000/folders'
 
 function DesktopContainer(props) {
     const [baseGadgets, setBaseGadgets] = useState([])
     const [customGadgets, setCustomGadgets] = useState([])
+    const [folderGadgets, setFolderGadgets] = useState([])
     const [renderedGadget, setRenderedGadget] = useState('')
-
+    const [renderedGadgetTwo, setRenderedGadgetTwo] = useState('')
+    
     const fetchGadgets = () => {
       fetch(baseGadgetsUrl)
       .then(res => res.json())
@@ -19,29 +22,86 @@ function DesktopContainer(props) {
       fetch(customGadgetsUrl)
       .then(res => res.json())
       .then(data => customGadgetFilter(data));
+    
+      fetch(folderGadgetUrl)
+      .then(res => res.json())
+      .then(data => folderGadgetFilter(data));
+
     }
 
     const customGadgetFilter = (gadgetArr) => {
         let userGadgets = gadgetArr.filter(gadget => gadget.user_id === props.loggedinUser.id)
         setCustomGadgets(userGadgets)
     }
-    
+
+    const folderGadgetFilter = (gadgetArr) => {
+        let userGadgets = gadgetArr.filter(gadget => gadget.id !== 1)
+        setFolderGadgets(userGadgets)
+    }
 
     useEffect(() => { fetchGadgets()}, [])
     
     const renderGadget = (gadget) => {
-         setRenderedGadget(<Gadget gadget={gadget} remove={removeGadget}/>)         
+         setRenderedGadget(<Gadget classN="gadget" user={props.loggedinUser} renderGadget={renderSecondaryGadget} patchGadget={patchGadget} gadget={gadget} remove={removeGadget} gadgets={customGadgets} />)         
     } 
+
+    const renderSecondaryGadget = (gadget) => {
+        setRenderedGadgetTwo(<Gadget classN="gadget2" user={props.loggedinUser} renderGadget={renderSecondaryGadget} patchGadget={patchGadget} gadget={gadget} remove={removeGadgetTwo} gadgets={customGadgets} />)         
+    }
 
     const removeGadget = () => {
         setRenderedGadget('')
     }
+
+    const removeGadgetTwo = () => {
+        setRenderedGadgetTwo('')
+    }
     
+    const patchGadget = (gadget, content) => {
+        let url
+        if (gadget.content_type.includes('base')) {
+            url = baseGadgetsUrl
+        } else {
+            url = customGadgetsUrl
+        }
+
+        let options = {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json",
+                "accepts": "application/json"
+            },
+            body: JSON.stringify({
+                content
+            })
+        }
+
+        fetch(url + gadget.id, options)
+        .then(res => res.json())
+        .then(data => findGadgetAndUpdate(data))
+
+    }
+
+    const findGadgetAndUpdate = gadget => {
+        let gadgetsArr
+        if (gadget.content_type.includes('base')) {
+            gadgetsArr = baseGadgets
+        } else {
+            gadgetsArr = customGadgets
+        }
+
+        let match= gadgetsArr.find(gadg => gadg.id === gadget.id)
+        let index = gadgetsArr.indexOf(match)
+        gadgetsArr[index] = gadget
+        setCustomGadgets(gadgetsArr)
+    }
+
     return (
         <div id="desktop">
             <DesktopNav />
             {renderedGadget}
-            <IconContainer baseGadgets={baseGadgets} customGadgets={customGadgets} renderGadget={renderGadget}/>
+            {renderedGadgetTwo}
+            <IconContainer folderGadgets={folderGadgets} baseGadgets={baseGadgets} customGadgets={customGadgets} renderGadget={renderGadget}/>
         </div>
     )
 }
