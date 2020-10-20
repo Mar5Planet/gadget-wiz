@@ -3,6 +3,8 @@ import DesktopNav from '../Components/DesktopNav'
 import IconContainer from './IconContainer'
 import Gadget from '../Components/Gadget'
 import { useClippy, ClippyProvider } from '@react95/clippy'
+import CreateForm from '../Components/CreateForm.js'
+
 
 
 const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
@@ -15,6 +17,7 @@ function DesktopContainer(props) {
     const [folderGadgets, setFolderGadgets] = useState([])
     const [renderedGadget, setRenderedGadget] = useState('')
     const [renderedGadgetTwo, setRenderedGadgetTwo] = useState('')
+    const [createForm, setCreateForm] = useState(false)
     
     console.log(renderedGadget, renderedGadgetTwo)
     const fetchGadgets = () => {
@@ -107,11 +110,65 @@ function DesktopContainer(props) {
         // return <span onClick={() => clippy.play('Wave')}>Hello Clippy!</span>
     }
 
+    const createGadget = gadgetPassed => {
+        if (gadgetPassed.content_type === 'folder') {
+            postToFolder(gadgetPassed)
+        } else {
+            postToGadget(gadgetPassed)
+        }
+    }
+
+    const postToFolder = (folder) => {
+        let options = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "accepts": "application/json"
+            },
+            body: JSON.stringify({
+                folder
+            })
+        }
+
+        fetch(folderGadgetUrl, options)
+        .then(res => res.json())
+        .then(data => setFolderGadgets([...folderGadgets, data]))
+    }
+
+
+    const postToGadget = (gadget) => {
+        let options = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "accepts": "application/json"
+            },
+            body: JSON.stringify({
+                gadget
+            })
+        }
+
+        fetch(customGadgetsUrl, options)
+        .then(res => res.json())
+        .then(data => setCustomGadgets([...customGadgets, data]))
+    }
+
+    const renderComponentForm = () => {
+       setCreateForm(true);
+    }
+    
+
+    const removeComponentForm = () => {
+        setCreateForm(false) 
+     }
+     
+
     return (
         <div id="desktop">
-            <DesktopNav renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo}/>
+            <DesktopNav renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo} renderComponentForm={renderComponentForm} />
             {renderedGadget}
             {renderedGadgetTwo}
+            {createForm ? <CreateForm user={props.loggedinUser} createGadget={createGadget} removeComponentForm={removeComponentForm} /> : null}
             <IconContainer folderGadgets={folderGadgets} baseGadgets={baseGadgets} customGadgets={customGadgets} renderGadget={renderGadget}/>
             <ClippyProvider >
                 <Clippy />

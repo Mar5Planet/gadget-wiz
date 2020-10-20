@@ -15,6 +15,10 @@ import {
 function DesktopNav(props) {
 
     const [open, setOpen] = React.useState(false);
+
+    // const createForm = () => {
+    //   return <CreateForm />
+    // }
         
     return (
       <AppBar style={{backgroundColor: 'silver', position: 'fixed', bottom: 0, top: 'auto'}}>
@@ -26,8 +30,8 @@ function DesktopNav(props) {
                 <ListItem className="navg-item">
                 <span role='img' aria-label='📂'>📂</span>Profile
                 </ListItem>
-                <ListItem className="navg-item">
-                  <span role='img' aria-label='📦'> 📦</span>Another Action
+                <ListItem className="navg-item" onClick={props.renderComponentForm}>
+                  <span role='img' aria-label='📦'> 📦</span>Create Gadget
                 </ListItem>
                 <Divider />
                 <ListItem className="navg-item">

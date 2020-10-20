@@ -125,3 +125,13 @@ background-size: cover;}
 .folder-container > * {
   margin-right: 10% !important;
 }
+
+.form-icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
