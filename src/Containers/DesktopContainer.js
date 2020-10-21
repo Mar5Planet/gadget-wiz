@@ -6,7 +6,6 @@ import { useClippy, ClippyProvider } from '@react95/clippy'
 import CreateForm from '../Components/CreateForm.js'
 
 
-
 const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
 const customGadgetsUrl = 'http://localhost:3000/gadgets/'
 const folderGadgetUrl = 'http://localhost:3000/folders'
@@ -19,7 +18,7 @@ function DesktopContainer(props) {
     const [renderedGadgetTwo, setRenderedGadgetTwo] = useState('')
     const [createForm, setCreateForm] = useState(false)
     
-    console.log(renderedGadget, renderedGadgetTwo)
+ 
     const fetchGadgets = () => {
       fetch(baseGadgetsUrl)
       .then(res => res.json())

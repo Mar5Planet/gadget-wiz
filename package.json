@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@react95/clippy": "^0.1.1",
+    "chessboard": "^2.0.0",
+    "jsx": "^0.9.89",
     "react": "^16.7.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.7.0",
