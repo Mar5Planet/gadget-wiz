@@ -28,15 +28,16 @@ function Gadget(props) {
 
     
     return(
-        <div className={props.classN}>
-            <div className="gadget-icons">
-                <button onClick= {props.remove}> X </button>
-            </div>
-            <div className="gadget-content">
-                {renderGadget(props.gadget)}
-            </div>
-            {/* this will be a useState const depending on content type. */}
+    <div className={`${props.classN} card card-secondary`}>
+        <div className="card-header text-center">
+        <button className="close-btn" onClick= {props.remove}> X </button>
+         {props.gadget.name}
         </div>
+        <div className="card-body bg-white">
+            {renderGadget(props.gadget)}
+        </div>
+    </div>
+
     )
 
 }

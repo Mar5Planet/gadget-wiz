@@ -1,8 +1,41 @@
 import React, { Component, useState, useEffect } from "react";
+import "./windows-95-ui-kit/w95.css"
 import "./App.css";
 import LoginForm from "./Containers/LoginForm";
 import DesktopContainer from "./Containers/DesktopContainer"
 import { Route, Switch } from 'react-router-dom'
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+import { styleReset, List, ListItem, Divider } from 'react95';
+// pick a theme of your choice
+import original from "react95/dist/themes/original";
+// original Windows95 font (optionally)
+import ms_sans_serif from "react95/dist/fonts/ms_sans_serif.woff2";
+import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
+
+
+const GlobalStyles = createGlobalStyle(
+  `
+    @font-face {
+      font-family: 'ms_sans_serif';
+      src: url('${ms_sans_serif}') format('woff2');
+      font-weight: 400;
+      font-style: normal
+    }
+    @font-face {
+      font-family: 'ms_sans_serif';
+      src: url('${ms_sans_serif_bold}') format('woff2');
+      font-weight: bold;
+      font-style: normal
+    }
+    body {
+      font-family: 'ms_sans_serif';
+    }
+    ${styleReset}
+  `
+  )
+  
+
 const usersUrl = 'http://localhost:3000/users/'
 
 function App() {
@@ -19,6 +52,10 @@ function App() {
 
   const [userArr, setUserArr] = useState([])
   
+  const logout = () => {
+    setLoggedInUser(false)
+  }
+
   const fetchUsers = () => {
     fetch(usersUrl)
     .then(res => res.json())
@@ -38,11 +75,15 @@ function App() {
   }
 
   return(
+    <>
+      <GlobalStyles />
+      <ThemeProvider theme={original}>
     <Switch>
       <Route path="/" exact render={() => <LoginForm user={loggedInUser} loginUser={userLoggedIn}/>} />
-      <Route path="/desktop" render={() => (loggedInUser? <DesktopContainer loggedinUser={loggedInUser}/> : false)} />
-      
+      <Route path="/desktop" render={() => (loggedInUser? <DesktopContainer logout={logout} loggedinUser={loggedInUser}/> : false)} />
     </Switch>
+      </ThemeProvider>
+    </>
   )
 }
 

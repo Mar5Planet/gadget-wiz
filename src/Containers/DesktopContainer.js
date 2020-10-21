@@ -164,7 +164,7 @@ function DesktopContainer(props) {
 
     return (
         <div id="desktop">
-            <DesktopNav renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo} renderComponentForm={renderComponentForm} />
+            <DesktopNav logout={props.logout} renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo} renderComponentForm={renderComponentForm} />
             {renderedGadget}
             {renderedGadgetTwo}
             {createForm ? <CreateForm user={props.loggedinUser} createGadget={createGadget} removeComponentForm={removeComponentForm} /> : null}

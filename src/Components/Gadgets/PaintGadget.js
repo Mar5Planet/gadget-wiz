@@ -4,7 +4,7 @@ import { ReactPainter } from 'react-painter';
 const Drawable = () => (
   <ReactPainter 
     width={400}
-    height={250}
+    height={220}
     render={({ triggerSave, canvas }) => (
       <div>
         <div>{canvas}</div>

@@ -24,9 +24,9 @@ const CreateForm = (props) => {
 
     const ImageUrl = () => {
         return (
-            <div className="image-url">
-                <label>Image Url:</label>
-                <input type='text' value={gadgetContent} onChange={(e) => setGadgetContent(e.target.value)}/> 
+            <div className="form-group d-flex align-items-center justify-content-between">
+                <label for="default" className="mr-3">Image Url:</label>
+                <input id="default" type='text' value={gadgetContent} onChange={(e) => setGadgetContent(e.target.value)} className="form-control w-75"/> 
             </div>
         )
     }
@@ -51,7 +51,16 @@ const CreateForm = (props) => {
                 name: gadgetName,
                 content_type: gadgetType,
                 icon_image: gadgetIcon
-                }   } else {
+                }   } else if (gadgetType === 'image') {
+                return gadget= {
+                    user_id: props.user.id,
+                    name: gadgetName,
+                    folder_id: 1,
+                    content_type: gadgetType,
+                    icon_image: gadgetContent,
+                    content: gadgetContent
+                }
+            } else {
                 return gadget= {
                     user_id: props.user.id,
                     name: gadgetName,
@@ -65,37 +74,51 @@ const CreateForm = (props) => {
     
 
     return(
-        <div className="gadget">
-            <div className="gadget-icons">
-                <button onClick= {props.removeComponentForm}> X </button>
-            </div>
-            <div className="gadget-content">
-
-                <form onSubmit={event => event.preventDefault()}>
-                    <label>Gadget Name</label>
-                    <input type='text' value={gadgetName} onChange={(e) => setGadgetName(e.target.value)}/>
-                    <div className="form-select">
-                        <label>Gadget Type</label>
-                        <br/>
-                        <select onChange={(e) => renderSecondInput(e.target.value)} name="gadget-type" id="gadget-select">
-                        <option value="text" >Text</option>
-                        <option value="image">Image</option>
-                        <option value="folder">Folder</option>
-                        </select>
+        <div className='gadget card card-secondary'>
+            
+                    <div className="card-header text-center">
+                        <button className="close-btn" onClick= {props.removeComponentForm}> X </button>
+                        <span className="icon icon-xs w95-window-empty"></span>
+                        Create Form
                     </div>
-                    {(secondarySelect === 'image') ? <ImageUrl /> : ''}    
-                    <div className="form-icons">
-                        {iconImages ? iconImages.map(image => <CreateIcon key={image.id} setIcon={setIconImage} image_url={image.image_url}/>) : ''}
-                    </div>
-                    <input type="submit" value="submit" onClick={() => {
-                        props.createGadget(createGadgetObject())
-                    }} />
-                </form>    
-            </div>
-        </div>
 
+                    <div className="card-body" >
+                    <form onSubmit={event => event.preventDefault()}>
+                        <div className="form-group d-flex align-items-center justify-content-between">
+                            <label for="default" className="mr-3">Name:</label>
+                            <input id="default" value={gadgetName} onChange={(e) => setGadgetName(e.target.value)} type="text" className="form-control w-75" />
+                        </div>
+
+                        <div className="form-group has-success d-flex align-items-center justify-content-between">
+                            <label for="success" className="mr-3">Gadget Type:</label>
+                            <select id="success" type="select" className="form-select form-control w-75" onChange={(e) => renderSecondInput(e.target.value)} >
+                                <option value="text" >Text</option>
+                                <option value="image">Image</option>
+                                <option value="folder">Folder</option> 
+                            </select>
+                        </div>
+
+                        <div className="image-form-input form-group d-flex align-items-center justify-content-between">
+                            {(secondarySelect === 'image') ? <ImageUrl /> : ''}   
+                        </div>
+
+                        <div className="form-icons">
+                            {iconImages ? iconImages.map(image => <CreateIcon key={image.id} setIcon={setIconImage} image_url={image.image_url}/>) : ''}
+                        </div>
+
+                        <div className="form-group d-flex justify-content-end" style={{paddingRight: '20px'}}>
+                            <div className="d-flex"> 
+                                <input className="btn-primary" type="submit" value="submit" onClick={() => {props.createGadget(createGadgetObject())}} />
+                            </div> 
+                        </div> 
+                    </form> 
+                </div>     
+
+             </div>
+              
     )
-
 }
 
 export default CreateForm
+
+

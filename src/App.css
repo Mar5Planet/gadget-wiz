@@ -3,6 +3,11 @@ background-image: url(https://i.pinimg.com/originals/f3/64/b7/f364b7d0a495668917
 background-repeat: no-repeat;
 background-size: cover;}
 
+html, 
+body {
+    height: 100%;
+}
+
 * {
   font-family: "MS Sans Serif"
 }
@@ -79,8 +84,8 @@ background-size: cover;}
 
 .gadget {
   position: absolute;
-  width: 420px;
-  height: 300px;
+  width: 420px !important;
+  height: 300px !important;
   z-index: 15;
   top: 35%;
   left: 45%;
@@ -97,6 +102,14 @@ background-size: cover;}
   margin: -100px 0 0 -150px;
 }
 
+.card-header {
+  font-size: 1rem;
+}
+
+.close-btn {
+  float: right
+}
+
 .gadget-textarea {
   width: 100%;
   height: 100%;
@@ -106,7 +119,7 @@ background-size: cover;}
   width: 100%;
   background-color: grey;
   text-align: right;
-  border: 1px solid rgb(65, 62, 62);
+  /* border: 1px solid rgb(65, 62, 62); */
 }
 
 .gadget-content {
@@ -126,6 +139,7 @@ background-size: cover;}
   margin-right: 10% !important;
 }
 
+/* Create Form */
 .form-icons {
   display: flex;
   flex-direction: row;
@@ -134,4 +148,12 @@ background-size: cover;}
   padding: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
+}
+
+.create-icons {
+  height:45px;
+}
+
+.image-form-input {
+  margin-bottom: 0;
 }

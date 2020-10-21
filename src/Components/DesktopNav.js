@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { NavLink, Link } from 'react-router-dom'
 import {
     AppBar,
     Toolbar,
@@ -22,7 +23,7 @@ function DesktopNav(props) {
         
     return (
       <AppBar style={{backgroundColor: 'silver', position: 'fixed', bottom: 0, top: 'auto'}}>
-        <Toolbar style={{ justifyContent: 'space-between left' }}>
+        <Toolbar style={{ justifyContent: 'space-between left'}}>
           <div style={{ position: 'relative', display: 'inline-block' }}>
             <Button onClick={() => setOpen(!open)} active={open} style={{ backgroundColor: 'silver', fontWeight: 'bold', width: '95px', height: '38px', marginRight: '10px'}}>
             <img src={"https://win98icons.alexmeub.com/icons/png/windows-0.png"} alt='React95' style={{ height: '20px', marginRight: 4 }}/>Start</Button>
@@ -34,12 +35,17 @@ function DesktopNav(props) {
                   <span role='img' aria-label='📦'> 📦</span>Create Gadget
                 </ListItem>
                 <Divider />
-                <ListItem className="navg-item">
-                  <span role='img' aria-label='🚀'>🚀</span>Log Out
-                </ListItem>
+
+                <NavLink to={"/"}>
+                    <ListItem className="navg-item">
+                    <span role='img' aria-label='🚀'>🚀</span>Log Out
+                    </ListItem>
+                </NavLink>  
               </List>
             )}
-            
+
+
+
         </div>
        {props.renderedGadget ? <NavGadget name={props.renderedGadget.props.gadget.name} icon_image={props.renderedGadget.props.gadget.icon_image} /> : ''}
        {props.renderedGadgetTwo ? <NavGadget name={props.renderedGadgetTwo.props.gadget.name} icon_image={props.renderedGadgetTwo.props.gadget.icon_image} /> : ''}
