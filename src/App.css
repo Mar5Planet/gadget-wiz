@@ -17,18 +17,66 @@ body {
   height: 100vh;
   width: 100%;
 }
+
+/* Login Form */
+.login-form {
+text-align: center;
+padding: 2%;
+}
+
+.login-form form {
+  padding: 0 2%;
+  text-align: center;
+}
+
+.login-form form img {
+  width: 200px;
+}
+
+.login-form form .form-group {
+  text-align: left;
+}
+
+.login-form form .form-group label {
+  font-size: 1rem;
+}
+
+.login-form form a button {
+  width: 50%;
+}
+
 /* Navbar */
 .navg-item:hover {
   background-color: grey;
 }
 
+.navg-item-icon {
+  margin-right: 20px;
+}
+
+.nav-timer {
+    position: fixed;
+    right: 2%;
+    font-weight: bold;
+    font-size: 0.7rem;
+    border-top: 1px solid #08080E;
+    border-left: 1px solid #08080E;
+    border-right: 1px solid #FCFCFC;
+    border-bottom: 1px solid #FCFCFC;
+    padding: 5px 15px;
+    width: 150px;
+}
 .nav-gadg {
-  margin: 0 2px;
-  background-color: grey;
-  width: 150px;
+  margin-right: 5px;
+  width: 170px;
+  overflow: hidden;
   height: 35px;
-  border: 1px solid black;
-  padding: 0 1%;
+  padding: 0 10px 0 6px;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  box-shadow: inset 1px 1px grey;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQYV2M8cODAf3t7ewbG/////z948CADAFuqCj64BtLKAAAAAElFTkSuQmCC);
+
 }
 
 .nav-gadg img {
@@ -46,10 +94,20 @@ body {
   
 }
 
+.nav-timer-logo {
+  text-align: left;
+  width: 15px;
+  margin-right: 2px;
+}
+
+.nav-timer span{
+  float: right;
+}
+
 /* Icons */
 
 .icon {    
-
+  z-index: 100;
   flex: inherit;
   display: inline-block;
   background-color: transparent;
@@ -66,26 +124,26 @@ body {
 }
 
 .icons-container {
-  display: flex;
+  display: grid;
   height: 90%;
   width: 100%;
   background-color: transparent;
   margin: 2% 1%;
-  flex-wrap: wrap;
-  gap: 2px;
-  flex-direction: column;
+  grid-template-columns: repeat(10, 90px);
+  column-gap: 10px;
+  grid-template-rows: repeat(7, 80px);
+  grid-auto-columns: auto;
+  grid-auto-flow: column;
 }
 
-.icons-container > * {
-  width: 8%;
-}
 
 /* Gadget */
 
 .gadget {
   position: absolute;
   width: 420px !important;
-  height: 300px !important;
+  height: auto !important;
+  min-height: 305px;
   z-index: 15;
   top: 35%;
   left: 45%;
@@ -112,7 +170,8 @@ body {
 
 .gadget-textarea {
   width: 100%;
-  height: 100%;
+  height: 40vh;
+  margin-top: 20px
 }
 
 .gadget-icons {
@@ -157,3 +216,4 @@ body {
 .image-form-input {
   margin-bottom: 0;
 }
+

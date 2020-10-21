@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { TextField, Button, Cutout } from 'react95'
-import logoImg from '../Assets/Images/gadget-wiz'
+import logoImg from '../Assets/Images/gadget-wiz.gif'
 
 
 function LoginForm(props) {
@@ -11,8 +11,7 @@ function LoginForm(props) {
     
     return (
         <div> 
-            <div style={{ width: 400, backgroundColor: '#C6C6C6', margin: '60px', border: 'solid', borderWidth: '3px'}}>
-                <div style={{ display: 'flex' }}>
+            <div className="gadget login-form" style={{ width: 400, backgroundColor: '#C6C6C6', boxShadow: "inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf", borderWidth: '3px'}}>
                     <form onSubmit={(e) => e.preventDefault()}>
                         <img src={logoImg}/>
                         <div className="form-group" style={{ marginLeft: '20px', marginTop: '18px'}}>
@@ -27,7 +26,6 @@ function LoginForm(props) {
                             <Button type="submit" className="btn btn-primary" style={{ marginLeft: '20px', marginBottom: '20px', backgroundColor: '#C6C6C6' }}>Ok</Button>
                         </NavLink>  
                     </form>
-                </div>
             </div>
         </div>
     )

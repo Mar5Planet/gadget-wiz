@@ -4,6 +4,7 @@ import IconContainer from './IconContainer'
 import Gadget from '../Components/Gadget'
 import { useClippy, ClippyProvider } from '@react95/clippy'
 import CreateForm from '../Components/CreateForm.js'
+import Profile from '../Components/Gadgets/Profile.js'
 
 
 const baseGadgetsUrl = 'http://localhost:3000/base_gadgets/'
@@ -104,9 +105,6 @@ function DesktopContainer(props) {
     const Clippy = () => {
         const { clippy } = useClippy()
         return('')
-
-        // !!renders a button that when clicked activates Clippy – though it seems redundant. Clippy seems to respond when you click him proper. 
-        // return <span onClick={() => clippy.play('Wave')}>Hello Clippy!</span>
     }
 
     const createGadget = gadgetPassed => {

@@ -24,9 +24,9 @@ const CreateForm = (props) => {
 
     const ImageUrl = () => {
         return (
-            <div className="form-group d-flex align-items-center justify-content-between">
-                <label for="default" className="mr-3">Image Url:</label>
-                <input id="default" type='text' value={gadgetContent} onChange={(e) => setGadgetContent(e.target.value)} className="form-control w-75"/> 
+            <div class="form-group d-flex align-items-center justify-content-between">
+                <label className="mr-3">Image Url:</label>
+                <input type='text' value={gadgetContent} onChange={(e) => setGadgetContent(e.target.value)} className="form-control w-75"/> 
             </div>
         )
     }
@@ -85,7 +85,7 @@ const CreateForm = (props) => {
                     <div className="card-body" >
                     <form onSubmit={event => event.preventDefault()}>
                         <div className="form-group d-flex align-items-center justify-content-between">
-                            <label for="default" className="mr-3">Name:</label>
+                            <label htmlFor="default" className="mr-3">Name:</label>
                             <input id="default" value={gadgetName} onChange={(e) => setGadgetName(e.target.value)} type="text" className="form-control w-75" />
                         </div>
 
@@ -98,9 +98,7 @@ const CreateForm = (props) => {
                             </select>
                         </div>
 
-                        <div className="image-form-input form-group d-flex align-items-center justify-content-between">
-                            {(secondarySelect === 'image') ? <ImageUrl /> : ''}   
-                        </div>
+                        {(secondarySelect === 'image') ? <ImageUrl /> : ''}   
 
                         <div className="form-icons">
                             {iconImages ? iconImages.map(image => <CreateIcon key={image.id} setIcon={setIconImage} image_url={image.image_url}/>) : ''}
