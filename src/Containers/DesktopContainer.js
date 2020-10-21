@@ -18,6 +18,7 @@ function DesktopContainer(props) {
     const [renderedGadget, setRenderedGadget] = useState('')
     const [renderedGadgetTwo, setRenderedGadgetTwo] = useState('')
     const [createForm, setCreateForm] = useState(false)
+    const [userProfile, setUserProfile] = useState(false)
     
  
     const fetchGadgets = () => {
@@ -47,12 +48,52 @@ function DesktopContainer(props) {
 
     useEffect(() => { fetchGadgets()}, [])
     
+    const recycleGadget = (gadget) => {
+        let index= customGadgets.findIndex(gadg => gadg.id === gadget.id)
+        let newArr= customGadgets
+        newArr.splice(index, 1)
+        setCustomGadgets(newArr)
+        if (gadget.folder_id === 4) {
+            setCustomGadgets(newArr)
+
+            let options = {
+                method: "DELETE",
+                headers: {
+                    "content-type": "application/json",
+                    "accepts": "application/json"
+                }
+            }
+
+            fetch(customGadgetsUrl + gadget.id, options)
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(console.log)
+            
+        }
+        else {
+            let options = {
+                method: "PATCH",
+                headers: {
+                    "content-type": "application/json",
+                    "accepts": "application/json"
+                },
+                body: JSON.stringify({
+                    folder_id: 4
+                }) 
+            }
+            fetch(customGadgetsUrl + gadget.id, options)
+            .then(res => res.json())
+            .then(data => setCustomGadgets([...customGadgets, data]))
+        }
+        
+    }
+
     const renderGadget = (gadget) => {
-         setRenderedGadget(<Gadget classN="gadget" user={props.loggedinUser} renderGadget={renderSecondaryGadget} patchGadget={patchGadget} gadget={gadget} remove={removeGadget} gadgets={customGadgets} />)         
+         setRenderedGadget(<Gadget classN="gadget" user={props.loggedinUser} renderGadget={renderSecondaryGadget} patchGadget={patchGadget} gadget={gadget} remove={removeGadget} gadgets={customGadgets} recycleGadget={recycleGadget} />)         
     } 
 
     const renderSecondaryGadget = (gadget) => {
-        setRenderedGadgetTwo(<Gadget classN="gadget2" user={props.loggedinUser} renderGadget={renderSecondaryGadget} patchGadget={patchGadget} gadget={gadget} remove={removeGadgetTwo} gadgets={customGadgets} />)         
+        setRenderedGadgetTwo(<Gadget classN="gadget2" user={props.loggedinUser} renderGadget={renderSecondaryGadget} patchGadget={patchGadget} gadget={gadget} removeParent={removeGadget} remove={removeGadgetTwo} gadgets={customGadgets} recycleGadget={recycleGadget} />)         
     }
 
     const removeGadget = () => {
@@ -158,14 +199,24 @@ function DesktopContainer(props) {
     const removeComponentForm = () => {
         setCreateForm(false) 
      }
+
+     const renderProfile = () => {
+         setUserProfile(true)
+     }
+
+     const removeProfile = () => {
+        setUserProfile(false)
+    }
+
      
 
     return (
         <div id="desktop">
-            <DesktopNav logout={props.logout} renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo} renderComponentForm={renderComponentForm} />
+            <DesktopNav logout={props.logout} renderedGadget={renderedGadget} renderedGadgetTwo={renderedGadgetTwo} renderComponentForm={renderComponentForm} renderProfile={renderProfile}/>
             {renderedGadget}
             {renderedGadgetTwo}
             {createForm ? <CreateForm user={props.loggedinUser} createGadget={createGadget} removeComponentForm={removeComponentForm} /> : null}
+            {userProfile ? <Profile user={props.loggedinUser} removeProfile={removeProfile} /> : null}
             <IconContainer folderGadgets={folderGadgets} baseGadgets={baseGadgets} customGadgets={customGadgets} renderGadget={renderGadget}/>
             <ClippyProvider >
                 <Clippy />

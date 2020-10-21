@@ -29,7 +29,7 @@ function DesktopNav(props) {
             <Button onClick={() => setOpen(!open)} active={open} style={{ backgroundColor: 'silver', fontWeight: 'bold', width: '95px', height: '38px', marginRight: '10px'}}>
             <img src={"https://win98icons.alexmeub.com/icons/png/windows-0.png"} alt='React95' style={{ height: '20px', marginRight: 4 }}/>Start</Button>
             {open && (<List style={{zIndex: 100000, backgroundColor: 'white', position: 'absolute', left: '0', top: '-140px' }} onClick={() => setOpen(false)}>
-                <ListItem className="navg-item">
+                <ListItem className="navg-item" onClick={props.renderProfile} >
                 <span className="navg-item-icon" role='img' aria-label='📂'>📂</span>Profile
                 </ListItem>
                 <ListItem className="navg-item" onClick={props.renderComponentForm}>

@@ -1,28 +1,32 @@
 import React from 'react'
 
-const Profile = () => {
+const Profile = (props) => {
     return(
+        <div className="gadget col-12 col-lg-6 mb-4 mb-lg-5">
+            <div className="card card-secondary">
 
+                <div className="card-header text-center">
+                    <span className="icon icon-xs w95-window-empty"></span>
+                        User Profile
+                    <button className="close-btn" onClick= {props.removeProfile}> X </button>
+                </div>
 
-        <div class="col-12 col-lg-6 mb-4 mb-lg-5">
-    <div class="card card-secondary">
-        <div class="card-header text-center">
-            <span class="icon icon-xs w95-window-empty"></span>
-            Default Secondary Card Header Title
-        </div>
-        <div class="card-body">
-            <p class="card-text">Windows 95 was available on either floppy
-                disks or a CD-ROM. The
-                floppy version shipped with 13 disks.</p>
-            <div class="d-flex mt-3">
-                <button class="btn btn-sm mr-2 btn-primary border-dark"
-                    type="button"><span class="btn-text">OK</span></button>
-                <button class="btn btn-sm btn-primary" type="button"><span
-                        class="btn-text">Cancel</span></button>
+                <div className="card-body" >
+                    <p className="card-text">Welcome, {props.user.username}!</p>
+
+                    <div className="form-group d-flex align-items-center justify-content-between">
+                        <label htmlFor="disabled" className="mr-3">User:</label>
+                        <input type="text" className="form-control w-75" value={props.user.username} placeholder={props.user.username} disabled />
+                    </div>
+
+                    <div className="form-group d-flex align-items-center justify-content-between">
+                        <label htmlFor="disabled" className="mr-3">E-Mail:</label>
+                        <input type="text" className="form-control w-75" value={props.user.email} placeholder={props.user.email} disabled />
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</div>
     )
 }
 

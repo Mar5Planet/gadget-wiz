@@ -90,7 +90,7 @@ const CreateForm = (props) => {
                         </div>
 
                         <div className="form-group has-success d-flex align-items-center justify-content-between">
-                            <label for="success" className="mr-3">Gadget Type:</label>
+                            <label htmlFor="success" className="mr-3">Gadget Type:</label>
                             <select id="success" type="select" className="form-select form-control w-75" onChange={(e) => renderSecondInput(e.target.value)} >
                                 <option value="text" >Text</option>
                                 <option value="image">Image</option>
