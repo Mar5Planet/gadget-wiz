@@ -39,16 +39,16 @@ const GlobalStyles = createGlobalStyle(
 const usersUrl = 'http://localhost:3000/users/'
 
 function App() {
-  // const [loggedInUser, setLoggedInUser] = useState(false)
+  const [loggedInUser, setLoggedInUser] = useState(false)
   //testing. Uncomment above and delete line below when ready to deploy.
   
   
-  const [loggedInUser, setLoggedInUser] = useState(
-    {id: 1,
-    username: 'mar',
-    email: "myemail@email.com"
-  }
-  )
+  // const [loggedInUser, setLoggedInUser] = useState(
+  //   {id: 1,
+  //   username: 'mar',
+  //   email: "myemail@email.com"
+  // }
+  // )
 
   const [userArr, setUserArr] = useState([])
   

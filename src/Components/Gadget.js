@@ -53,8 +53,10 @@ function Gadget(props) {
          {props.gadget.name}
         </div>
         <div className="card-body bg-white">
-            {renderGadget(props.gadget)}
-            {recycle ? <button onClick={() => removeRecycledGadgets(props.gadget)} className="recycle-btn btn-primary btn mr-2 mb-2 btn-primary" ><span className="btn-text">Delete</span></button> : ''}
+         
+                {renderGadget(props.gadget)}
+                {recycle ? <button onClick={() => removeRecycledGadgets(props.gadget)} className="btn-primary recycle-btn" ><span className="btn-text">Delete</span></button> : ''}
+
         </div>
     </div>
 
