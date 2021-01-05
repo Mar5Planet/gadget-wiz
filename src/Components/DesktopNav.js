@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React, {useState} from 'react'
+import { NavLink} from 'react-router-dom'
 import {
     AppBar,
     Toolbar,
-    TextField,
     Button,
     List,
     ListItem,
@@ -16,7 +15,7 @@ import {
   
 function DesktopNav(props) {
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const date = new Date();
     // const createForm = () => {
     //   return <CreateForm />
@@ -52,10 +51,10 @@ function DesktopNav(props) {
        {props.renderedGadgetTwo ? <NavGadget name={props.renderedGadgetTwo.props.gadget.name} icon_image={props.renderedGadgetTwo.props.gadget.icon_image} /> : ''}
 
        <div className="nav-timer">
-           <a href="#"><img className="nav-timer-logo" src="https://win98icons.alexmeub.com/icons/png/check-1.png" /></ a>
-           <a href=""><img className="nav-timer-logo" src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png"  /></a>
-           <a href="https://github.com/Mar5Planet/gadget-wiz/"><img className="nav-timer-logo" src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" /></a>
-           <a href=""><img className="nav-timer-logo" src={IgLogo} /></a>
+           <img alt="check" className="nav-timer-logo" src="https://win98icons.alexmeub.com/icons/png/check-1.png" />
+           <img alt="mute" className="nav-timer-logo" src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png"  />
+           <a href="https://github.com/Mar5Planet/gadget-wiz/"><img alt="github" className="nav-timer-logo" src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" /></a>
+           <img alt="time" className="nav-timer-logo" src={IgLogo} />
          <span>{date.toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}</span>
         </div>
         </Toolbar>

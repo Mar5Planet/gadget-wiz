@@ -144,7 +144,7 @@ function DesktopContainer(props) {
     }
 
     const Clippy = () => {
-        const { clippy } = useClippy()
+        useClippy()
         return('')
     }
 

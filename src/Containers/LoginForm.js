@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { TextField, Button, Cutout } from 'react95'
+import { NavLink} from 'react-router-dom'
+import { TextField, Button} from 'react95'
 import logoImg from '../Assets/Images/gadget-wiz.gif'
 
 
@@ -13,7 +12,7 @@ function LoginForm(props) {
         <div> 
             <div className="gadget login-form" style={{ width: 400, backgroundColor: '#C6C6C6', boxShadow: "inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf", borderWidth: '3px'}}>
                     <form onSubmit={(e) => e.preventDefault()}>
-                        <img src={logoImg}/>
+                        <img alt="logo-img" src={logoImg}/>
                         <div className="form-group" style={{ marginLeft: '20px', marginTop: '18px'}}>
                             <label htmlFor="exampleInputEmail1">User</label>
                             <TextField type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" fullWidth />

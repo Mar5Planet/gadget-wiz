@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TextGadget from './Gadgets/TextGadget'
 import EmailGadget from './Gadgets/Email'
 import ImageGadget from './Gadgets/Image'
 import FolderGadget from './Gadgets/FolderGadget'
-import { render } from 'react-dom'
 import SnakeGame from './Gadgets/SnakeGame'
 import PaintGadget from './Gadgets/PaintGadget'
 

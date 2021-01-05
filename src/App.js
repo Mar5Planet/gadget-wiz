@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./windows-95-ui-kit/w95.css"
 import "./App.css";
 import LoginForm from "./Containers/LoginForm";
@@ -6,7 +6,7 @@ import DesktopContainer from "./Containers/DesktopContainer"
 import { Route, Switch } from 'react-router-dom'
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { styleReset, List, ListItem, Divider } from 'react95';
+import { styleReset } from 'react95';
 // pick a theme of your choice
 import original from "react95/dist/themes/original";
 // original Windows95 font (optionally)

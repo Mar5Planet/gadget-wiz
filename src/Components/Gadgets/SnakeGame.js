@@ -1,6 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import Snake    from 'react-snake-game';
+import Snake from 'react-snake-game';
 
 const WRAPPER_STYLE = {
 

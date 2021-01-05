@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 function ImageGadget(props) {
  
     return (
-        <img className="gadget-img" src={props.gadget.content}/>
+        <img alt="img" className="gadget-img" src={props.gadget.content}/>
     )
     
 }

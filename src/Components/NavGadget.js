@@ -4,7 +4,7 @@ function NavGadget(props) {
     return (
         <div className="nav-gadg">
             <p>{props.name}</p>
-            <img src={props.icon_image}/>
+            <img alt="navGag" src={props.icon_image}/>
         </div>
     )
 }

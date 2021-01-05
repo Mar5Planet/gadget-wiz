@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import CreateIcon from './CreateIcons'
-import { Button, Select, Fieldset } from 'react95'
 
 const iconUrl = 'http://localhost:3000/icons'
 
@@ -8,7 +7,7 @@ const iconUrl = 'http://localhost:3000/icons'
 const CreateForm = (props) => {
     const [iconImages, setIconImages] = useState(false)
     const [secondarySelect, setSecondarySelect] = useState('')
-    const [thirdSelect, setThirdSelect] = useState(false)
+    // const [, setThirdSelect] = useState(false)
     
     const [gadgetName, setGadgetName] = useState('')
     const [gadgetType, setGadgetType] = useState('')
@@ -36,23 +35,22 @@ const CreateForm = (props) => {
         setGadgetType(type)
     }
 
-    const renderThirdInput = () => {
-        setThirdSelect(true)
-    }
+    // const renderThirdInput = () => {
+    //     setThirdSelect(true)
+    // }
 
     const setIconImage = imageUrl => {
         setGadgetIcon(imageUrl)
     }
 
     const createGadgetObject = () => {
-        let gadget
         if (gadgetType === 'folder') {
-            return gadget= {
+            return {
                 name: gadgetName,
                 content_type: gadgetType,
                 icon_image: gadgetIcon
                 }   } else if (gadgetType === 'image') {
-                return gadget= {
+                return {
                     user_id: props.user.id,
                     name: gadgetName,
                     folder_id: 1,
@@ -61,7 +59,7 @@ const CreateForm = (props) => {
                     content: gadgetContent
                 }
             } else {
-                return gadget= {
+                return {
                     user_id: props.user.id,
                     name: gadgetName,
                     folder_id: 1,

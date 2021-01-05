@@ -1,7 +1,6 @@
 import React from 'react'
 import { ReactPainter } from 'react-painter';
 import colorImg from '../../Assets/Images/colors.png'
-import fileImg from '../../Assets/Images/file.png'
 import toolImg from '../../Assets/Images/tools.png'
 
 const Drawable = () => (
@@ -12,7 +11,7 @@ const Drawable = () => (
         <ReactPainter 
           width={400}
           height={220}
-          render={({ triggerSave, canvas }) => (
+          render={({ canvas }) => (
             <div>
               <div>{canvas}</div>
             </div>
